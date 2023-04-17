@@ -16,13 +16,19 @@ The parentheses can be nested.
 
 function removeParentheses(s) {
   let start = -1,
+    flag = 0,
     end = -1;
   for (let i = 0; i < s.length; i++) {
-    if (s[i] == "(") {
+    if (s[i] == "(" && flag == 0) {
       start = i;
+      flag = 1;
     }
     if (s[i] == ")") {
-      end = i;
+      end = i + 1;
     }
   }
+  let tmp1 = s.slice(0, start);
+  let tmp2 = s.slice(end);
+  let result = tmp1 + tmp2;
+  return result;
 }
